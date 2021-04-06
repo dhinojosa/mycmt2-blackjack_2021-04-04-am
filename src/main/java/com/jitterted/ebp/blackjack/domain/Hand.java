@@ -1,4 +1,4 @@
-package com.jitterted.ebp.blackjack;
+package com.jitterted.ebp.blackjack.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,10 @@ public class Hand {
   }
 
   public Hand() {
+  }
+
+  public Card firstCard() {
+    return cards.get(0);
   }
 
   private int value() {
@@ -73,4 +77,8 @@ public class Hand {
   public boolean valueEquals(int target) {
     return value() == target;
   }
+
+  public List<Card> cards() {
+    return List.copyOf(cards);
+  };
 }
