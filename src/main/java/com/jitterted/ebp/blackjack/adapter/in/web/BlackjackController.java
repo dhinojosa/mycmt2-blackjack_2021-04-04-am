@@ -6,8 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
-
 @Controller
 public class BlackjackController {
 
@@ -28,5 +26,11 @@ public class BlackjackController {
         GameView gameView = GameView.of(game);
         model.addAttribute("gameView", gameView);
         return "blackjack";
+    }
+
+    @PostMapping("/hit")
+    public String hitCommand() {
+        game.playerHits();
+        return "redirect:/game";
     }
 }

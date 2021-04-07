@@ -44,4 +44,14 @@ public class BlackjackControllerTest {
         assertThat(gameView.getDealerCards()).containsExactly("2♥", "3♣");
         assertThat(gameView.getPlayerCards()).containsExactly("10♦", "K♦");
     }
+
+
+    @Test
+    void testHitCommandDealsAnAdditionalCardToPlayer() {
+        Game game = new Game();
+        BlackjackController blackjackController = new BlackjackController(game);
+        blackjackController.startGame();//P:2, D:2
+        blackjackController.hitCommand();//P:3
+        assertThat(game.playerHand().cards()).hasSize(3);
+    }
 }
