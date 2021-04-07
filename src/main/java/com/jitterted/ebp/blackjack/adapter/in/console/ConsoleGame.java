@@ -124,6 +124,6 @@ public class ConsoleGame {
 
         displayFinalGameState(); //console
 
-        System.out.println(game.determineOutcome());
+        System.out.println(game.determineOutcome().message());
     }
 }
