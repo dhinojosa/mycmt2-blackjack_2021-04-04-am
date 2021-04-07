@@ -14,7 +14,16 @@ public class GameOutcomeTest {
         game.initialDeal();
         game.playerHits();
 
-        assertThat(game.determineOutcome().message()).isEqualTo("You Busted, so you lose.  💸");
+        assertThat(game.determineOutcome()).isEqualTo(GameOutcome.PLAYER_LOSES);
+    }
+
+    @Test
+    void playerGetsBlackjack() {
+        StubDeck stubDeck = new StubDeck(Rank.ACE, Rank.EIGHT, Rank.JACK,
+            Rank.TEN);
+        Game game = new Game(stubDeck);
+        game.initialDeal();
+        assertThat(game.determineOutcome()).isEqualTo(GameOutcome.PLAYER_WINS_BLACKJACK);
     }
 
 
