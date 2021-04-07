@@ -1,4 +1,4 @@
-package com.jitterted.ebp.blackjack.apapter.in.web;
+package com.jitterted.ebp.blackjack.adapter.in.web;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +7,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest
 public class WebTest {
@@ -32,6 +31,7 @@ public class WebTest {
     @Test
     void testGetGameEndpointIs200Ok() throws Exception {
         mockMvc.perform(get("/game"))
-               .andExpect(status().isOk());
+               .andExpect(status().isOk())
+               .andExpect(model().attributeExists("gameView"));
     }
 }
