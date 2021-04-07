@@ -33,7 +33,7 @@ public class BlackjackControllerTest {
             new Card(DIAMONDS, KING),
             new Card(CLUBS, THREE)));
 
-        Game game = new Game();
+        Game game = new Game(deck);
         BlackjackController blackjackController = new BlackjackController(game);
 
         blackjackController.startGame();
@@ -42,5 +42,6 @@ public class BlackjackControllerTest {
         GameView gameView = (GameView) model.getAttribute("gameView");
 
         assertThat(gameView.getDealerCards()).containsExactly("2♥", "3♣");
+        assertThat(gameView.getPlayerCards()).containsExactly("10♦", "K♦");
     }
 }

@@ -25,9 +25,7 @@ public class BlackjackController {
 
     @GetMapping("/game")
     public String viewGame(Model model) {
-        GameView gameView = new GameView();
-        gameView.setDealerCards(List.of("2♥", "3♣"));
-        gameView.setPlayerCards(List.of("10♦", "K♦"));
+        GameView gameView = GameView.of(game);
         model.addAttribute("gameView", gameView);
         return "blackjack";
     }
