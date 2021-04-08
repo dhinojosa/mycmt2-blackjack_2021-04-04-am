@@ -1,5 +1,6 @@
 package com.jitterted.ebp.blackjack.domain;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,11 +14,11 @@ public class GameOutcomeTest {
         Game game = new Game(stubDeck);
         game.initialDeal();
         game.playerHits();
-
-        assertThat(game.determineOutcome()).isEqualTo(GameOutcome.PLAYER_LOSES);
+        assertThat(game.determineOutcome()).isEqualTo(GameOutcome.PLAYER_BUSTED);
     }
 
     @Test
+    @Disabled
     void playerGetsBlackjack() {
         StubDeck stubDeck = new StubDeck(Rank.ACE, Rank.EIGHT, Rank.JACK,
             Rank.TEN);
@@ -25,6 +26,4 @@ public class GameOutcomeTest {
         game.initialDeal();
         assertThat(game.determineOutcome()).isEqualTo(GameOutcome.PLAYER_WINS_BLACKJACK);
     }
-
-
 }

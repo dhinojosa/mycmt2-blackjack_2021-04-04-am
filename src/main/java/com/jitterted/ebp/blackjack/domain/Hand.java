@@ -83,5 +83,7 @@ public class Hand {
         return List.copyOf(cards);
     }
 
-    ;
+    boolean hasBlackjack() {
+        return valueEquals(21) && cards().size() == 2;
+    }
 }

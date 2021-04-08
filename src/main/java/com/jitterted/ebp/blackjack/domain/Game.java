@@ -27,6 +27,8 @@ public class Game {
     }
 
     public GameOutcome determineOutcome() {
+        if (playerHand.hasBlackjack())
+            return GameOutcome.PLAYER_WINS_BLACKJACK;
         if (playerHand.isBusted()) {
             return GameOutcome.PLAYER_BUSTED;
         } else if (dealerHand.isBusted()) {
