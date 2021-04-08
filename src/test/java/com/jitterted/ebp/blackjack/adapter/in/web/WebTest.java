@@ -41,4 +41,11 @@ public class WebTest {
                .andExpect(status().is3xxRedirection())
                .andExpect(redirectedUrl("/game"));
     }
+
+    @Test
+    void testDoneIs200Ok() throws Exception {
+        mockMvc.perform(get("/done"))
+               .andExpect(model().attributeExists("outcome"))
+               .andExpect(status().isOk());
+    }
 }
